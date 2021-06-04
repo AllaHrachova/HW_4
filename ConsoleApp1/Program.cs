@@ -8,41 +8,33 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Console.WriteLine("Введите слово");
-
-            string word = Console.ReadLine();
-            bool isValid = word.All(Char.IsLetter);
-            if (isValid == false)
+            string newWord = Console.ReadLine();
+            bool isValid = newWord.All(Char.IsLetter);
+            if (!isValid)
             {
                 Console.WriteLine("Нужно ввести одно слово из букв");
             }
             else
             {
-                if (IsPalindrom(word) == true)
-                {
-                    Console.WriteLine("Палиндром");
-                }
-                else
-                {
-                    Console.WriteLine("Не палиндром");
-                }
-
+                string result = IsPalindrom(newWord) ? "Палиндром" : "Не палиндром";
+                Console.WriteLine(result);
                 Console.ReadLine();
             }
         }
+
         public static bool IsPalindrom(string word)
         {
-            bool r = true;
+            bool palindrom = true;
             for (int i = 0; i < word.Length - 1; i++)
             {
-                int n = word.Length - 1 - i;
+                int length = word.Length - 1 - i;
 
-                if (word[i] != word[n])
+                if (word[i] != word[length])
                 {
-                    r = false;
+                    palindrom = false;
                 }
             }
-            return r;
+            return palindrom;
         }
     }
 }
-
